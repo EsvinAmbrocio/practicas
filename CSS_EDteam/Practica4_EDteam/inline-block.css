@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+body{
+     font-size: 2.5em; 
+}
+h1{
+    background: yellow;
+    height:200px;
+    width: 200px;
+    display: inline;
+}
+p{
+    display: inline;
+    background: pink;
+}
+span{
+    display: block;
+    background: yellow;
+}
+.box{
+    background: yellow;
+    background-clip: content-box;
+    width: 500px;
+    height: 500px;
+    padding: 50px;
+    border: 10px solid black;
+    margin: 50px;
+    box-sizing:content-box ;
+}

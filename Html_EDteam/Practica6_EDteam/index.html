@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tablas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <table>
+        <caption>Mi horario de clases</caption>
+        <colgroup>
+            <col span="4">
+            <col style="background:yellow;">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>Lunes</th>
+                <th>Martes</th>
+                <th>Miercoles</th>
+                <th>Jueves</th>
+                <th>Viernes</th>
+                <!--los th son para hacer encabezados de tablas-->
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2">Html</td>
+                <td>PHP</td>
+                <td rowspan="2">Javascript</td>
+                <td>Python</td>
+                <td>css</td>
+            </tr>
+            <tr>
+                <td>Go</td>
+                <td>Big Data</td>
+                <td>Diseño ux</td>
+            </tr>
+            <tr>
+                <td colspan="5">Recreo</td>
+            </tr>
+            <tr>
+                <td>Java</td>
+                <td>SQL</td>
+                <td>algoritmos</td>
+                <td>angular</td>
+                <td>pwa</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr style="background:yellow;">
+                <td>6 creditos</td>
+                <td>3 creditos</td>
+                <td>4 creditos</td>
+                <td>2 creditos</td>
+                <td>7 creditos</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

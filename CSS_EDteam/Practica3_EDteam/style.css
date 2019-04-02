@@ -1,0 +1,18 @@
+body{
+    font-size: 3em;
+}
+#main .post p{
+    color :red;
+}
+p{
+    color: green;
+}
+div#main .post p{
+    color: blue;
+}
+body div#main .post p{
+    color: purple;
+}
+.description{
+    color:red;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formularios</title>
+</head>
+<body>
+    <h1>Formularios</h1>
+    <form action="form.php">
+        <fieldset>
+            <legend>Datos Personales</legend>
+            <div>
+                <label for="nombre">Ingrese su nombre</label>
+                <input type="text" id="nombre" name="username" placeholder="Ejem: Juan">
+            </div>
+            <div>
+                <label>
+                    Ingrese su apellido
+                    <input type="text">
+                </label>
+            </div>
+            <div>
+                <label>
+                    Ingrese su correo
+                    <input type="email" name="" id="" required>
+                </label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Tus datos en la plataforma</legend>
+            <div>
+                <label>
+                    Ingrese su contraseña
+                    <input type="password" name="password" id="password" required>
+            </label>
+            </div>
+            <div>
+                <label>
+                    fecha de nacimiento
+                    <input type="date" name=""  id="">
+                </label>
+            </div>
+            <div>
+                <label>
+                    Ingrese la cantidad que va a comprar
+                    <input type="number" name="" id="" value="2" readonly>
+                </label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Tus pasatiempos</legend>
+            <label>
+                <input type="checkbox" name="" id="">cine
+            </label>
+            <label>
+                <input type="checkbox" name="" id="">Musica
+            </label>
+            <label>
+                <input type="checkbox" name="" id="">Leer
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>Tu genero</legend>
+            <label>
+                <input type="radio" name="genero" id="">Hombre
+            </label>
+            <label>
+                <input type="radio" name="genero" id="">Mujer
+            </label>
+            <label>
+                <input type="radio" name="genero" id="">Prefiero no decirlo
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>Select y opciones</legend>
+            <label>Escoge tu pais 
+                <select name="country" id="country">
+                    <optgroup label="America">
+                        <option value="peru">Peru</option>
+                        <option value="colombia">colombia</option>
+                        <option value="venezuela">venezuela</option>
+                    </optgroup>
+                    <optgroup label="Europa">
+                        <option value="Es">España</option>
+                        <option value="It">italia</option>
+                    </optgroup>
+                    <textarea name="mensaje" id="" cols="30" rows="10" placeholder="Escribe tu mensaje"></textarea>
+                </select>
+            </label>
+        </fieldset>
+        <input type="submit" value="Iniciar secion">
+        
+        <!--<button>Enviar</button>-->
+    </form>
+    <script>/*
+    document.getElementById('password').addEventListener('keyup', e=>{
+        console.log(e.target.value)
+    })*/
+    </script>
+</body>
+</html>
