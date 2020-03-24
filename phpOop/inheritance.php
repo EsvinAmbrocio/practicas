@@ -26,7 +26,8 @@
 
         public function takeDamage($damage){
             
-            $this->setHp($this->hp - $damage);
+            $this->hp = $this->hp - $this->absorbDamage($damage);
+            show("{$this->name} ahora tiene {$this->hp} puntos de vida");
         
             if($this->hp <= 0){
                 $this->die();
@@ -37,9 +38,8 @@
             exit();
         }
 
-        private function setHp($points){
-            $this->hp = $points;
-            show("{$this->name} ahora tiene {$this->hp} puntos de vida");
+        protected function absorbDamage($damage){
+            return $damage;
         }
     };
     class Soldier extends Unit{
@@ -58,13 +58,17 @@
             show("{$this->name} ataca con la espada a {$opponent->getName()}");
             $opponent->takeDamage($this->damage);
         }
-        public function takeDamage($damage){
+/*         public function takeDamage($damage){
+            
+            $damage = $this->absorbDamage($damage);
 
+            return parent::takeDamage($damage);
+        } */
+        protected function absorbDamage($damage){
             if($this->armor){
                 $damage = $this->armor->absorbDamage($damage);
             }
-
-            return parent::takeDamage($damage);
+            return $damage;
         }
     };
     class Archer extends Unit{
@@ -72,22 +76,33 @@
 
         public function attack(Unit $opponent){
             show("{$this->name} dispara una flecha a {$opponent->getName()}");
-            $opponent->takeDamage($this->damage);
-                      
-        }
-        public function takeDamage($damage){
-            if(rand(0,1) == 1){
-                return parent::takeDamage($damage);
-            }
+            $opponent->takeDamage($this->damage);             
         }
     };
 
-    class Armor {
+    interface Armor{
+        public function absorbDamage($damage);
+    }
+
+    class BronceArmor implements Armor{
         public function absorbDamage($damage){
             return $damage/2;
         }
+    };
+
+    class SilverArmor implements Armor{
+        public function absorbDamage($damage){
+            return $damage/3;
+        }
+    };
+
+    class CursedArmor implements Armor{
+        public function absorbDamage($damage){
+            return $damage*2;
+        }
     }
-    $armor = new armor();
+
+    $armor = new SilverArmor();
     $ramm = new Soldier("Ramm");
 
     $silence = new Archer("Silence");
