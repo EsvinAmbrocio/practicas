@@ -1,7 +1,7 @@
 <?php
 
-namespace Styde;
-use Warcraft\Armor;
+namespace Armors\Styde;
+use Styde\Armor;
 
 class SilverArmor implements Armor{
     public function absorbDamage($damage){
