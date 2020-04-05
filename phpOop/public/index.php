@@ -5,12 +5,12 @@
     require '../vendor/autoload.php';
 
     $armor = new Armors\BronzeArmor();
-    $ramm = new Soldier("Ramm");
+    $ramm = new Soldier("Ramm",new Weapons\BasicSword);
 
-    $silence = new Archer("Silence");
-    $silence->attack($ramm);
+    $silence = new Archer("Silence",new Weapons\CrossBow);
     $ramm->setarmor($armor);
     $silence->attack($ramm);
-    $ramm->attack($silence)
+    $silence->attack($ramm);
+    $ramm->attack($silence);
 
 ?>

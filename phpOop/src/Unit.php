@@ -5,9 +5,21 @@ namespace Styde;
 abstract Class Unit{
     protected $hp = 40;
     protected $name;
-    
-    public function __construct($name){
+    protected $armor;
+    protected $weapon;
+
+    public function __construct($name, Weapon $weapon ){
         $this->name = $name;
+        $this->weapon = $weapon;
+    }
+
+    public function setWeapon(Weapon $weapon)
+    {
+        $this->weapon = $weapon;
+    }
+
+    public function setarmor(Armor $armor = null){
+        $this->armor = $armor;
     }
 
     public function getHp(){
@@ -22,7 +34,18 @@ abstract Class Unit{
         show("{$this->name} avanza hacia $direction");
     }
 
-    abstract public function attack(Unit $opponent);
+    public function attack(Unit $opponent){
+       
+        if(! $this->weapon){
+
+            throw new \Exception("The unit has no weapons");
+
+        }
+        show($this->weapon->getDescription($this, $opponent));
+        
+        $opponent->takeDamage($this->weapon->getDamage());
+
+    }
 
     public function takeDamage($damage){
         
@@ -39,6 +62,9 @@ abstract Class Unit{
     }
 
     protected function absorbDamage($damage){
+        if($this->armor){
+            $damage = $this->armor->absorbDamage($damage);
+        }
         return $damage;
     }
 };
