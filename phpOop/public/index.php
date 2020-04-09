@@ -4,10 +4,10 @@
 
     require '../vendor/autoload.php';
 
-    $armor = new Armors\BronzeArmor();
-    $ramm = new Soldier("Ramm",new Weapons\BasicSword);
+    $armor = new Armors\SilverArmor;
+    $ramm = new Unit("Ramm",new Weapons\BasicSword);
 
-    $silence = new Archer("Silence",new Weapons\CrossBow);
+    $silence = new Unit("Silence",new Weapons\FireBow);
     $ramm->setarmor($armor);
     $silence->attack($ramm);
     $silence->attack($ramm);

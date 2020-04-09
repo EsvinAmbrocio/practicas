@@ -2,7 +2,7 @@
 
 namespace Styde;
 
-abstract Class Unit{
+Class Unit{
     protected $hp = 40;
     protected $name;
     protected $armor;
@@ -36,20 +36,17 @@ abstract Class Unit{
 
     public function attack(Unit $opponent){
        
-        if(! $this->weapon){
+       $attack = $this->weapon->createAttack();
 
-            throw new \Exception("The unit has no weapons");
-
-        }
-        show($this->weapon->getDescription($this, $opponent));
+        show($attack->getDescription($this, $opponent));
         
-        $opponent->takeDamage($this->weapon->getDamage());
+        $opponent->takeDamage($attack);
 
     }
 
-    public function takeDamage($damage){
+    public function takeDamage(Attack $attack){
         
-        $this->hp = $this->hp - $this->absorbDamage($damage);
+        $this->hp = $this->hp - $this->absorbDamage($attack);
         show("{$this->name} ahora tiene {$this->hp} puntos de vida");
     
         if($this->hp <= 0){
@@ -61,10 +58,10 @@ abstract Class Unit{
         exit();
     }
 
-    protected function absorbDamage($damage){
+    protected function absorbDamage(Attack $attack){
         if($this->armor){
-            $damage = $this->armor->absorbDamage($damage);
+            return $this->armor->absorbDamage($attack);
         }
-        return $damage;
+        return $attack->getDamage();
     }
 };
