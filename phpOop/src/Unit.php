@@ -31,7 +31,7 @@ Class Unit{
     }
 
     public function move($direction){
-        show("{$this->name} avanza hacia $direction");
+        show($this->getDescription(__FUNCTION__, $direction));
     }
 
     public function attack(Unit $opponent){
@@ -47,14 +47,14 @@ Class Unit{
     public function takeDamage(Attack $attack){
         
         $this->hp = $this->hp - $this->absorbDamage($attack);
-        show("{$this->name} ahora tiene {$this->hp} puntos de vida");
-    
+        show($this->getDescription(__FUNCTION__));
+
         if($this->hp <= 0){
             $this->die();
         } 
     }
     public function die(){
-        show("{$this->name} muere");
+        show($this->getDescription(__FUNCTION__));
         exit();
     }
 
@@ -63,5 +63,14 @@ Class Unit{
             return $this->armor->absorbDamage($attack);
         }
         return $attack->getDamage();
+    }
+
+    protected function getDescription($keyDescription, $direction= null)
+    {
+        return Translator::get($keyDescription,[
+            'Unit' => $this->getName(),
+            'hp' => $this->getHp(),
+            'direction'=>$direction
+        ] );
     }
 };

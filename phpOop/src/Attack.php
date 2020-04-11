@@ -6,22 +6,21 @@ class Attack
     
     protected $damage;
     protected $magical;
-    protected $description;
+    protected $keyDescription;
 
-    public function __construct($damage, $magical, $description)
+    public function __construct($damage, $magical, $keyDescription)
     {
         $this->damage = $damage;
         $this->magical = $magical;
-        $this->description = $description;
+        $this->keyDescription = $keyDescription;
     }
 
     public function getDescription(Unit $attcker, Unit $opponent)
     {
-        return str_replace(
-            [':Unit', ':opponent'],
-            [$attcker->getName(), $opponent->getName()],
-            $this->description,
-        );
+        return Translator::get($this->keyDescription,[
+            'Unit' => $attcker->getName(),
+            'opponent' => $opponent->getName(),
+        ] );
     }
     public function getDamage()
     {
