@@ -3,6 +3,7 @@
 namespace Styde;
 
 Class Unit{
+    protected const MAX_DAMAGE = 10;
     protected $hp = 40;
     protected $name;
     protected $armor;
@@ -62,13 +63,23 @@ Class Unit{
     }
 
     public function takeDamage(Attack $attack){
-        
-        $this->hp = $this->hp - $this->absorbDamage($attack);
+    
+        $this->setHp($this->absorbDamage($attack));
+
         Log::info($this->getDescription(__FUNCTION__));
 
         if($this->hp <= 0){
             $this->die();
         } 
+    }
+
+    protected function setHp($damage)
+    {
+        if ($damage > static::MAX_DAMAGE) {
+            $damage = static::MAX_DAMAGE;
+        }
+
+        $this->hp = $this->hp - $damage;
     }
     public function die(){
         Log::info($this->getDescription(__FUNCTION__));
