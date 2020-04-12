@@ -19,7 +19,7 @@
     $ramm = new Unit("Ramm",new Weapons\BasicSword);
 
     $silence = new Unit("Silence",new Weapons\FireBow);
-    $ramm->setarmor($armor);
+    //$ramm->setarmor($armor);
     $silence->attack($ramm);
     $silence->attack($ramm);
     $ramm->attack($silence);

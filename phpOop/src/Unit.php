@@ -11,6 +11,7 @@ Class Unit{
     public function __construct($name, Weapon $weapon ){
         $this->name = $name;
         $this->weapon = $weapon;
+        $this->armor = new Armors\MissingArmor();
     }
 
     public function setWeapon(Weapon $weapon)

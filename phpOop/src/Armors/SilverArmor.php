@@ -4,12 +4,11 @@ namespace Styde\Armors;
 use Styde\Armor;
 use Styde\Attack;
 
-class SilverArmor implements Armor{
-    public function absorbDamage(Attack $attack){
-        if ($attack->isPhysical()) {
-            return $attack->getDamage() /3;
-        }
+class SilverArmor extends Armor{
+    public function absorbPhysicalDamage(Attack $attack){
 
-        return $attack->getDamage();
+        return $attack->getDamage() /3;
+        
     }
+
 };
