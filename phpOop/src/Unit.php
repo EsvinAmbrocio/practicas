@@ -48,14 +48,14 @@ Class Unit{
     }
 
     public function move($direction){
-        show($this->getDescription(__FUNCTION__, $direction));
+        Log::info($this->getDescription(__FUNCTION__, $direction));
     }
 
     public function attack(Unit $opponent){
        
        $attack = $this->weapon->createAttack();
 
-        show($attack->getDescription($this, $opponent));
+       Log::info($attack->getDescription($this, $opponent));
         
         $opponent->takeDamage($attack);
 
@@ -64,14 +64,14 @@ Class Unit{
     public function takeDamage(Attack $attack){
         
         $this->hp = $this->hp - $this->absorbDamage($attack);
-        show($this->getDescription(__FUNCTION__));
+        Log::info($this->getDescription(__FUNCTION__));
 
         if($this->hp <= 0){
             $this->die();
         } 
     }
     public function die(){
-        show($this->getDescription(__FUNCTION__));
+        Log::info($this->getDescription(__FUNCTION__));
         exit();
     }
 

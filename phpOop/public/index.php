@@ -14,13 +14,16 @@
         'move'=>':Unit avanza hacia :direction'
     ]);
 
+    $logger = new HtmlLogger();
+
+    Log::setLogger($logger);
 
     $ramm = Unit::createSoldier()
             ->setWeapon(new Weapons\BasicSword)
             ->setArmor(new Armors\SilverArmor())
             ->setShield();
 
-    $silence = new Unit("Silence",new Weapons\FireBow);
+    $silence = new Unit("Silence", new Weapons\FireBow);
     $silence->attack($ramm);
     $silence->attack($ramm);
     $ramm->attack($silence);
