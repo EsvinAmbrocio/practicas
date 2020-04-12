@@ -17,7 +17,7 @@ abstract class Armor{
         return $attack->getDamage();
     }
 
-    public function absorbMagicalDamage(Attck $attack)
+    public function absorbMagicalDamage(Attack $attack)
     {
         return $attack->getDamage();
     }

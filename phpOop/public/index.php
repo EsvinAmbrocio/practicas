@@ -15,11 +15,12 @@
     ]);
 
 
-    $armor = new Armors\SilverArmor;
-    $ramm = new Unit("Ramm",new Weapons\BasicSword);
+    $ramm = Unit::createSoldier()
+            ->setWeapon(new Weapons\BasicSword)
+            ->setArmor(new Armors\SilverArmor())
+            ->setShield();
 
     $silence = new Unit("Silence",new Weapons\FireBow);
-    //$ramm->setarmor($armor);
     $silence->attack($ramm);
     $silence->attack($ramm);
     $ramm->attack($silence);
