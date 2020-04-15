@@ -1,0 +1,16 @@
+{
+    "name": "styde/oop",
+    "description": "Proyecto demo para el curso de programacion orientada a objetos",
+    "authors": [
+        {
+            "name": "Esvin Ambrocio",
+            "email": "esvin01cainedpp@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload":{
+	    "psr-4":{
+		    "Styde\\":"src/"
+        }
+    }
+}
